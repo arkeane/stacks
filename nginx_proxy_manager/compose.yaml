@@ -1,0 +1,19 @@
+name: reverse_proxy
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-reverse-proxy
+    restart: unless-stopped
+    ports:
+      - '${IFACE}:80:80' # Public HTTP Port
+      - '${IFACE}:443:443' # Public HTTPS Port
+      - '${IFACE}:${ADMIN_PORT}:81' # Admin Web Port
+    environment:
+      - DISABLE_IPV6=${DISABLE_IPV6}
+    volumes:
+      - data:/data
+      - certs:/etc/letsencrypt
+
+volumes:
+  data:
+  certs:
