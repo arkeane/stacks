@@ -9,9 +9,7 @@ services:
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
-      - UMASK=002
-      - TZ=${TZ}
-      - WEBUI_PORTS=${WEBUI_PORT}/tcp,${WEBUI_PORT}/udp
+      - WEBUI_PORT=${WEBUI_PORT}
     volumes:
       - config:/config
       - data:/data
