@@ -3,7 +3,7 @@ services:
   web:
     image: miniflux/miniflux:latest
     ports:
-      - "${IFACE}:8001:8080"
+      - "${IFACE}:${PORT}:8080"
     depends_on:
       db:
         condition: service_healthy
