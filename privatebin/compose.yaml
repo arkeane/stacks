@@ -1,0 +1,19 @@
+name: privatebin
+services:
+  nginx-fpm-alpine:
+    container_name: privatebin
+    image: privatebin/nginx-fpm-alpine
+    restart: unless-stopped
+
+    volumes:
+      - privatebin_data:/srv/data
+    ports:
+      - ${IFACE}:8580:8080
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    read_only: true
+    
+volumes:
+  privatebin_data:

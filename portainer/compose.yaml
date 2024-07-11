@@ -1,0 +1,14 @@
+name: portainer
+services:
+  portainer-ce:
+    ports:
+      - '${IFACE}:9443:9443'
+    container_name: portainer
+    restart: always
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - 'portainer_data:/data'
+    image: 'portainer/portainer-ce:sts'
+volumes:
+  portainer_data:
+    external: true
