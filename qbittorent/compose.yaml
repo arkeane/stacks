@@ -1,4 +1,4 @@
-
+name: qbittorent
 services:
   qbittorrent:
     container_name: qbittorrent
@@ -14,7 +14,9 @@ services:
       - WEBUI_PORTS=${WEBUI_PORT}/tcp,${WEBUI_PORT}/udp
     volumes:
       - config:/config
-      - ${DATA_FOLDER}:/data
+      - data:/data
+      - ${DATA_FOLDER}:/app/qBittorrent/downloads
     restart: unless-stopped
 volumes:
   config:
+  data:
