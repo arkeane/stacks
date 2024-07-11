@@ -2,7 +2,7 @@ name: qbittorent
 services:
   qbittorrent:
     container_name: qbittorrent
-    image: ghcr.io/hotio/qbittorrent
+    image: lscr.io/linuxserver/qbittorrent
     ports:
       - "${IFACE}:${WEBUI_PORT}:${WEBUI_PORT}"
       - "${IFACE}:${TORRENT_PORT}:54356"
@@ -15,7 +15,7 @@ services:
     volumes:
       - config:/config
       - data:/data
-      - ${DATA_FOLDER}:/app/qBittorrent/downloads
+      - ${DATA_FOLDER}:/downloads
     restart: unless-stopped
 volumes:
   config:
