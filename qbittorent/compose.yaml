@@ -1,0 +1,20 @@
+
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    image: ghcr.io/hotio/qbittorrent
+    ports:
+      - "${IFACE}:${WEBUI_PORT}:8080"
+      - "${IFACE}:${TORRENT_PORT}:54356"
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - UMASK=002
+      - TZ=${TZ}
+      - WEBUI_PORTS=${WEBUI_PORT}/tcp,${WEBUI_PORT}/udp
+    volumes:
+      - config:/config
+      - ${DATA_FOLDER}:/data
+    restart: unless-stopped
+volumes:
+  config:
