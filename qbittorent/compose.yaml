@@ -4,7 +4,7 @@ services:
     container_name: qbittorrent
     image: ghcr.io/hotio/qbittorrent
     ports:
-      - "${IFACE}:${WEBUI_PORT}:{WEBUI_PORT}"
+      - "${IFACE}:${WEBUI_PORT}:${WEBUI_PORT}"
       - "${IFACE}:${TORRENT_PORT}:54356"
     environment:
       - PUID=${PUID}
