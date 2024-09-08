@@ -1,0 +1,15 @@
+name: dufs
+services:
+  dufs:
+    image: sigoden/dufs
+    ports:
+      - "${IFACE}:${PORT}:5000"
+    volumes:
+      - pwd:/data
+    command: /data -A
+    restart: unless-stopped
+
+volumes:
+  pwd:
+    external: true
+    name: "`pwd`"
